@@ -4,7 +4,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import AuthContext from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../accets/logo.svg';
@@ -13,14 +13,20 @@ import Input from '../../componets/Input';
 import Button from '../../componets/Button';
 
 import { Container, Content, Background } from './styles';
+import { sign } from 'crypto';
+
+interface SignInFormData {
+  email: string;
+  password: string
+}
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { name } = useContext(AuthContext)
+  const { signIn } = useContext(AuthContext)
 
 
-  const handleSubmit = useCallback(async (data: object) => {
+  const handleSubmit = useCallback(async (data: SignInFormData) => {
     try {
       // console.log(data);
       formRef.current?.setErrors({});
@@ -32,11 +38,16 @@ const SignIn: React.FC = () => {
         password: Yup.string().required('Senha é obrigatória'),
       });
       await schema.validate(data, { abortEarly: false });
+
+      signIn({
+        email: data.email,
+        password: data.password
+      })
     } catch (err) {
       const errors = getValidationErrors(err);
       formRef.current?.setErrors(errors);
     }
-  }, []);
+  }, [signIn]);
 
   return (
     <Container>
