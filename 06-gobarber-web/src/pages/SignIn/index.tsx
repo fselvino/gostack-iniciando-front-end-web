@@ -4,7 +4,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/AuthContext';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../accets/logo.svg';
@@ -13,7 +13,7 @@ import Input from '../../componets/Input';
 import Button from '../../componets/Button';
 
 import { Container, Content, Background } from './styles';
-import { sign } from 'crypto';
+//import { sign } from 'crypto';
 
 interface SignInFormData {
   email: string;
