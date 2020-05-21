@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { Background } from '../../pages/SignIn/styles'
+
 
 interface ToastProps {
   type?: 'sucess' | 'info' | 'error'
