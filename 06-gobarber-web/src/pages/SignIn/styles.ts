@@ -24,7 +24,7 @@ export const Content = styled.div`
     margin-bottom: 24px;
   }
   a {
-    color: #f4ede8;
+    color: #f4ede5;
     display: block;
     margin-top: 24px;
     text-decoration: none;
