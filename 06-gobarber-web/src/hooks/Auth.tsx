@@ -1,9 +1,16 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 
+interface User {
+  id: string
+  name: string
+  avatar_url: string
+
+}
+
 interface AuthState {
   token: string;
-  user: object;
+  user: User;
 }
 
 interface SinInCredentials {
@@ -12,7 +19,7 @@ interface SinInCredentials {
 }
 
 interface AuthContextData {
-  user: object;
+  user: User;
   signIn(credentials: SinInCredentials): Promise<void>;
   signOut(): void;
 }
@@ -44,7 +51,7 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const signOut = useCallback(async () => {
-    localStorage.removeItemItem('@GoBarber:token');
+    localStorage.removeItem('@GoBarber:token');
     localStorage.removeItem('@GoBarber:user');
     setData({} as AuthState);
   }, []);
