@@ -1,11 +1,23 @@
-import React from 'react';
-import { Container, Header, HeaderContent, Profile, Content, Schedule, NextAppointment, Calendar } from './styles'
+import React, { useState } from 'react';
+import {
+  Container,
+  Header,
+  HeaderContent,
+  Profile, Content,
+  Schedule,
+  NextAppointment,
+  Calendar,
+  Section,
+  Appointment
+} from './styles'
 
 import logoImg from '../../accets/logo.svg'
 import { FiPower, FiClock } from 'react-icons/fi'
 import { useAuth } from '../../hooks/Auth';
 
 const Dashboard: React.FC = () => {
+
+  const [selectedDate, setSelectedDate] = useState(new Date())
 
   const { signOut, user } = useAuth()
 
@@ -50,6 +62,57 @@ const Dashboard: React.FC = () => {
               </span>
             </div>
           </NextAppointment>
+          <Section>
+            <strong>Manhã</strong>
+            <Appointment>
+              <span>
+                <FiClock />
+              08:00
+              </span>
+              <div>
+                <img src="https://avatars2.githubusercontent.com/u/33097295?s=400&u=67d5d68bc2c8f2526847806ecd87aa51bc99a16d&v=4" alt="Fernando Selvino" />
+                <strong>Fernando Selvino</strong>
+              </div>
+
+            </Appointment>
+            <Appointment>
+              <span>
+                <FiClock />
+              08:00
+              </span>
+              <div>
+                <img src="https://avatars2.githubusercontent.com/u/33097295?s=400&u=67d5d68bc2c8f2526847806ecd87aa51bc99a16d&v=4" alt="Fernando Selvino" />
+                <strong>Fernando Selvino</strong>
+              </div>
+
+            </Appointment>
+          </Section>
+
+          <Section>
+            <strong>Tarde</strong>
+            <Appointment>
+              <span>
+                <FiClock />
+              08:00
+              </span>
+              <div>
+                <img src="https://avatars2.githubusercontent.com/u/33097295?s=400&u=67d5d68bc2c8f2526847806ecd87aa51bc99a16d&v=4" alt="Fernando Selvino" />
+                <strong>Fernando Selvino</strong>
+              </div>
+
+            </Appointment>
+            <Appointment>
+              <span>
+                <FiClock />
+              08:00
+              </span>
+              <div>
+                <img src="https://avatars2.githubusercontent.com/u/33097295?s=400&u=67d5d68bc2c8f2526847806ecd87aa51bc99a16d&v=4" alt="Fernando Selvino" />
+                <strong>Fernando Selvino</strong>
+              </div>
+
+            </Appointment>
+          </Section>
 
         </Schedule>
         <Calendar />
